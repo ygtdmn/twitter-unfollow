@@ -8,3 +8,11 @@ I used these prompts to create this script:
 - Add pagination
 
 Also, it gave me wrong code sometimes and I responded with error messages. I wanted some CSS changes too and that's it.
+
+# Usage
+1. Install [Node.js](https://nodejs.org/en)
+2. Clone the repo and open the terminal in the repo's folder
+3. Use `npm install`
+4. Edit app.js to fill it with your Twitter API tokens and list id
+5. Use `node app` to run the script
+6. Visit https://localhost:3000 to use the app
