@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Twitter Unfollow</title>
+		<link rel="stylesheet" href="/styles.css" />
+	</head>
+	<body>
+		<h1>People who don't follow you back</h1>
+		<ul>
+			<% users.forEach(user => { %>
+			<li>
+				<img
+					src="<%= user.profile_image_url_https %>"
+					alt="<%= user.screen_name %>"
+				/>
+				<div>
+					<a
+						href="https://twitter.com/<%= user.screen_name %>"
+						target="_blank"
+						class="username"
+						><%= user.screen_name %></a
+					>
+					<p class="display-name"><%= user.name %></p>
+					<p class="description"><%= user.description %></p>
+					<p>
+						Following: <%= user.friends_count %> | Followers: <%=
+						user.followers_count %>
+					</p>
+				</div>
+				<a href="#" class="unfollow" data-id="<%= user.id_str %>">Unfollow</a>
+				<a href="#" class="add-to-list" data-id="<%= user.id_str %>"
+					>Add to list</a
+				>
+			</li>
+			<% }) %>
+		</ul>
+
+		<div class="pagination">
+			<% if (currentPage > 1) { %>
+			<a href="/?page=<%= currentPage - 1 %>">&laquo; Previous</a>
+			<% } %> <% for (let i = 1; i <= totalPages; i++) { %>
+			<a href="/?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"
+				><%= i %></a
+			>
+			<% } %> <% if (currentPage < totalPages) { %>
+			<a href="/?page=<%= currentPage + 1 %>">Next &raquo;</a>
+			<% } %>
+		</div>
+
+		<div id="notification" class="hidden"></div>
+		<script src="/main.js"></script>
+	</body>
+</html>
